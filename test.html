@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bot Control Dashboard</title>
+  <!-- Google Fonts (optional) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Global resets and styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      /* Gradient background */
+      background: linear-gradient(135deg, #0D0D0D 0%, #444 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header section */
+    .header {
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .header img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Main container */
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    /* Card-like panel for the controls */
+    .control-panel {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      /* Simple fade-in animation */
+      animation: fadeIn 0.8s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .control-panel:hover {
+      transform: translateY(0);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    @keyframes fadeIn {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .control-panel h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.start {
+      background-color: #4CAF50;
+    }
+    .btn.start:hover {
+      background-color: #43a047;
+    }
+
+    .btn.stop {
+      background-color: #f44336;
+    }
+    .btn.stop:hover {
+      background-color: #e53935;
+    }
+
+    .status {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    /* Footer (optional) */
+    .footer {
+      background-color: #000;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <!-- Replace 'jetsonsrobotics_logo.jpg' with the actual filename/path of your logo -->
+    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQFGZbfVHoP-eA/company-logo_200_200/company-logo_200_200/0/1675879179231/jetsonsrobotics_logo?e=1748476800&v=beta&t=07EtOnqnlJWR382to7TZW6GhdX8SjVPDFPM3Jq06RYE" alt="Company Logo">
+    <h2>Jetsons Robotics</h2>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <div class="control-panel">
+      <h3>Bot Control</h3>
+      <!-- Start/Stop Buttons -->
+      <button id="startBtn" class="btn start" onclick="startBot()">START</button>
+      <button id="stopBtn" class="btn stop" onclick="stopBot()" style="display: none;">STOP</button>
+
+      <!-- Status Text -->
+      <div class="status">
+        <p id="botStatus">Bot Status: STOPPED</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (optional) -->
+  <div class="footer">
+    © 2025 Jetsons Robotics
+  </div>
+
+  <!-- JavaScript for Start/Stop functionality -->
+  <script>
+    function startBot() {
+      document.getElementById('botStatus').textContent = 'Bot Status: RUNNING';
+      document.getElementById('startBtn').style.display = 'none';
+      document.getElementById('stopBtn').style.display = 'inline-block';
+    }
+
+    function stopBot() {
+      document.getElementById('botStatus').textContent = 'Bot Status: STOPPED';
+      document.getElementById('stopBtn').style.display = 'none';
+      document.getElementById('startBtn').style.display = 'inline-block';
+    }
+  </script>
+</body>
+</html>
